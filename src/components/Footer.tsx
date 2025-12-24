@@ -1,61 +1,57 @@
 import Link from "next/link";
-import { Facebook, Instagram, Twitter, Youtube, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Instagram, Facebook } from "lucide-react";
 
-const menuLinks = [
-  { href: "/menu/hidangan-utama", label: "Hidangan Utama" },
-  { href: "/menu/appetizer", label: "Appetizer" },
-  { href: "/menu/minuman", label: "Minuman" },
-  { href: "/menu/dessert", label: "Dessert" },
-  { href: "/menu/paket", label: "Paket Hemat" },
-];
-
-const infoLinks = [
+const quickLinks = [
+  { href: "/menu", label: "Menu" },
   { href: "/tentang", label: "Tentang Kami" },
   { href: "/lokasi", label: "Lokasi" },
-  { href: "/karir", label: "Karir" },
-  { href: "/press", label: "Press & Media" },
-  { href: "/franchise", label: "Franchise" },
+  { href: "/galeri", label: "Galeri" },
+  { href: "/catering", label: "Catering" },
+  { href: "/reservasi", label: "Reservasi" },
+  { href: "/kontak", label: "Kontak" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-[#2C1810] text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <footer className="bg-[#2C1810] text-[#FDF6E3]">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <Link href="/" className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-full bg-[#8B4513] flex items-center justify-center">
-                <span className="text-[#DAA520] text-xl">R</span>
-              </div>
-              <div>
-                <div className="text-xl font-bold font-heading">Rasa Negeri</div>
-                <div className="text-[10px] tracking-widest uppercase text-[#DAA520]">
-                  Cita Rasa Autentik Nusantara
-                </div>
-              </div>
-            </Link>
-            <p className="text-white/70 text-sm mb-6">
-              Restoran masakan Indonesia autentik dengan resep warisan 3 generasi.
+            <h3 className="mb-4 text-xl font-bold text-[#DAA520]">
+              Rasa Negeri
+            </h3>
+            <p className="mb-4 text-sm leading-relaxed text-[#FDF6E3]/80">
+              Cita Rasa Autentik Nusantara. Menyajikan hidangan tradisional Indonesia dengan bahan berkualitas dan resep turun-temurun.
             </p>
             <div className="flex gap-3">
-              {[Facebook, Instagram, Twitter, Youtube].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#8B4513] transition-colors"
-                >
-                  <Icon className="w-5 h-5" />
-                </a>
-              ))}
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FDF6E3]/10 transition-colors hover:bg-[#DAA520]"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FDF6E3]/10 transition-colors hover:bg-[#DAA520]"
+              >
+                <Facebook className="h-5 w-5" />
+              </a>
             </div>
           </div>
 
           <div>
-            <h3 className="text-lg font-bold font-heading mb-6">Menu</h3>
-            <ul className="space-y-3">
-              {menuLinks.map((link) => (
+            <h4 className="mb-4 text-base font-semibold text-[#DAA520]">Menu Cepat</h4>
+            <ul className="flex flex-col gap-2">
+              {quickLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-white/70 hover:text-[#DAA520] transition-colors text-sm">
+                  <Link
+                    href={link.href}
+                    className="text-sm text-[#FDF6E3]/80 transition-colors hover:text-[#DAA520]"
+                  >
                     {link.label}
                   </Link>
                 </li>
@@ -64,60 +60,58 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold font-heading mb-6">Informasi</h3>
-            <ul className="space-y-3">
-              {infoLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-white/70 hover:text-[#DAA520] transition-colors text-sm">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="mb-4 text-base font-semibold text-[#DAA520]">Jam Operasional</h4>
+            <ul className="flex flex-col gap-2 text-sm text-[#FDF6E3]/80">
+              <li className="flex items-start gap-2">
+                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-[#DAA520]" />
+                <div>
+                  <p>Senin - Jumat</p>
+                  <p>10:00 - 22:00</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-2">
+                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-[#DAA520]" />
+                <div>
+                  <p>Sabtu - Minggu</p>
+                  <p>09:00 - 23:00</p>
+                </div>
+              </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-lg font-bold font-heading mb-6">Kontak</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-[#DAA520] flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-sm text-white/70">Reservasi</p>
-                  <a href="tel:+62215551234" className="text-white hover:text-[#DAA520]">(021) 555-RASA</a>
-                </div>
+            <h4 className="mb-4 text-base font-semibold text-[#DAA520]">Kontak</h4>
+            <ul className="flex flex-col gap-3 text-sm text-[#FDF6E3]/80">
+              <li className="flex items-start gap-2">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#DAA520]" />
+                <span>Jl. Sudirman No. 123, Jakarta Pusat</span>
               </li>
-              <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-[#DAA520] flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-sm text-white/70">Email</p>
-                  <a href="mailto:halo@rasanegeri.id" className="text-white hover:text-[#DAA520]">halo@rasanegeri.id</a>
-                </div>
+              <li className="flex items-center gap-2">
+                <Phone className="h-4 w-4 shrink-0 text-[#DAA520]" />
+                <span>(021) 1234-5678</span>
               </li>
-              <li className="flex items-start gap-3">
-                <Clock className="w-5 h-5 text-[#DAA520] flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-sm text-white/70">Jam Operasional</p>
-                  <p className="text-white">11:00 - 22:00</p>
-                </div>
+              <li className="flex items-center gap-2">
+                <Mail className="h-4 w-4 shrink-0 text-[#DAA520]" />
+                <span>info@rasanegeri.id</span>
               </li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-white/60 text-sm">
-              © 2025 Rasa Negeri Restaurant. All rights reserved.
+      <div className="border-t border-[#FDF6E3]/10">
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:justify-between sm:text-left">
+            <p className="text-sm text-[#FDF6E3]/60">
+              &copy; {new Date().getFullYear()} Rasa Negeri. Semua hak dilindungi.
             </p>
-            <p className="text-white/60 text-sm">
-              Website ini dibuat dengan ❤️ oleh{" "}
+            <p className="text-sm text-[#FDF6E3]/60">
+              Website dibuat oleh{" "}
               <a
                 href="https://creativism.id"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#DAA520] hover:underline"
+                className="text-[#DAA520] transition-colors hover:underline"
               >
                 Creativism Digital Marketing Agency
               </a>

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Rasa Negeri | Restoran Masakan Indonesia Autentik Jakarta",
-  description: "Restoran Indonesia premium dengan resep warisan 3 generasi. Rendang, gudeg, soto betawi autentik. Reservasi online, catering tersedia.",
-  keywords: ["restoran indonesia", "masakan indonesia", "rendang", "gudeg", "soto betawi", "restoran jakarta"],
+  title: "Rasa Negeri - Cita Rasa Autentik Nusantara",
+  description: "Restoran Indonesia dengan cita rasa autentik nusantara. Nikmati hidangan tradisional Indonesia yang lezat dan berkualitas.",
+  keywords: "restoran indonesia, makanan indonesia, nasi goreng, rendang, sate, kuliner nusantara",
 };
 
 export default function RootLayout({
@@ -14,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+      </body>
     </html>
   );
 }

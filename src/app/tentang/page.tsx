@@ -2,124 +2,230 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Award, Heart, Leaf, ChefHat, Users } from "lucide-react";
+import { Award, Heart, Users, Utensils } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const values = [
-  { icon: Heart, title: "Cinta dalam Setiap Hidangan", desc: "Setiap masakan kami dibuat dengan penuh cinta dan dedikasi" },
-  { icon: Leaf, title: "Bahan Baku Terbaik", desc: "Kami hanya menggunakan bahan-bahan segar berkualitas tinggi" },
-  { icon: ChefHat, title: "Resep Turun-Temurun", desc: "Resep autentik yang dijaga selama 3 generasi" },
-  { icon: Users, title: "Kebersamaan", desc: "Makanan adalah cara terbaik untuk mempererat hubungan" },
+  {
+    icon: Heart,
+    title: "Cinta Kuliner",
+    description: "Setiap hidangan kami buat dengan penuh cinta dan dedikasi terhadap kuliner Nusantara",
+  },
+  {
+    icon: Award,
+    title: "Kualitas Terbaik",
+    description: "Bahan-bahan segar pilihan untuk menghasilkan rasa yang autentik dan berkualitas",
+  },
+  {
+    icon: Users,
+    title: "Keluarga",
+    description: "Resep turun-temurun yang telah menjadi warisan keluarga selama puluhan tahun",
+  },
+  {
+    icon: Utensils,
+    title: "Tradisi",
+    description: "Melestarikan cita rasa tradisional Indonesia untuk generasi mendatang",
+  },
 ];
 
-const timeline = [
-  { year: "1985", title: "Awal Mula", desc: "Ibu Sari membuka warung kecil di Yogyakarta" },
-  { year: "1992", title: "Ekspansi Pertama", desc: "Membuka cabang kedua di Semarang" },
-  { year: "2005", title: "Masuk Jakarta", desc: "Membuka cabang pertama di Kemang, Jakarta" },
-  { year: "2024", title: "5 Cabang", desc: "Kini hadir di 5 lokasi strategis Jakarta" },
+const milestones = [
+  { year: "2010", event: "Rasa Negeri pertama dibuka di Jakarta Pusat" },
+  { year: "2013", event: "Pembukaan cabang kedua di Jakarta Selatan" },
+  { year: "2016", event: "Ekspansi ke Bandung dengan konsep baru" },
+  { year: "2019", event: "Cabang Surabaya resmi dibuka" },
+  { year: "2023", event: "Meluncurkan layanan catering premium" },
 ];
 
 export default function TentangPage() {
   return (
     <>
       <Header />
-      <main className="pt-20">
-        <section className="py-24 bg-[#2C1810]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span className="inline-block px-4 py-1.5 bg-[#DAA520]/20 text-[#DAA520] text-sm font-medium rounded-full mb-6">Sejak 1985</span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-white mb-6">Cerita Kami</h1>
-            <p className="text-lg text-white/70 max-w-2xl mx-auto">Perjalanan hampir 40 tahun dalam menyajikan cita rasa autentik Nusantara</p>
+      <main className="pt-16 sm:pt-20">
+        {/* Hero */}
+        <section className="relative overflow-hidden bg-[#2C1810] py-16 sm:py-24">
+          <div className="absolute inset-0">
+            <Image
+              src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80"
+              alt="Tentang Rasa Negeri"
+              fill
+              className="object-cover opacity-30"
+            />
+          </div>
+          <div className="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h1 className="mb-4 text-4xl font-bold text-[#FDF6E3] sm:text-5xl">
+                Tentang Kami
+              </h1>
+              <p className="mx-auto max-w-2xl text-base text-[#FDF6E3]/70 sm:text-lg">
+                Perjalanan kami dalam melestarikan cita rasa autentik Nusantara
+              </p>
+            </motion.div>
           </div>
         </section>
 
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-                  <Image src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800" alt="Warung Rasa Negeri" fill className="object-cover" />
-                </div>
-                <div className="absolute -bottom-6 -right-6 bg-[#8B4513] text-white p-6 rounded-xl">
-                  <div className="text-3xl font-bold font-heading">39+</div>
-                  <div className="text-sm text-white/80">Tahun Pengalaman</div>
+        {/* Story */}
+        <section className="bg-[#FDF6E3] py-16 sm:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="relative aspect-square overflow-hidden rounded-2xl lg:aspect-[4/5]"
+              >
+                <Image
+                  src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=800&q=80"
+                  alt="Sejarah Rasa Negeri"
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="mb-6 text-3xl font-bold text-[#2C1810] sm:text-4xl">
+                  Cerita Kami
+                </h2>
+                <div className="space-y-4 text-base leading-relaxed text-[#3D2314]/80 sm:text-lg">
+                  <p>
+                    Rasa Negeri lahir dari kecintaan mendalam terhadap kuliner Indonesia. Bermula dari dapur keluarga di tahun 2010, kami bertekad untuk menghadirkan cita rasa autentik Nusantara kepada masyarakat luas.
+                  </p>
+                  <p>
+                    Dengan resep yang diwariskan turun-temurun dan bahan-bahan pilihan terbaik, setiap hidangan kami adalah perpaduan sempurna antara tradisi dan kualitas.
+                  </p>
+                  <p>
+                    Kini, dengan empat cabang di kota-kota besar Indonesia, kami terus berkomitmen untuk melestarikan warisan kuliner Nusantara sambil memberikan pengalaman makan yang tak terlupakan.
+                  </p>
                 </div>
               </motion.div>
-              <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-                <h2 className="text-3xl md:text-4xl font-bold font-heading text-[#2C1810] mb-6">Dari Warung Kecil di Yogyakarta</h2>
-                <p className="text-[#3D2314]/80 text-lg mb-4">
-                  Kisah Rasa Negeri dimulai pada tahun 1985, ketika Ibu Sari Wijaya membuka sebuah warung kecil di pinggir jalan Malioboro, Yogyakarta.
-                </p>
-                <p className="text-[#3D2314]/80 text-lg mb-4">
-                  Dengan modal sederhana dan resep masakan yang diwariskan dari ibunya, ia mulai menyajikan masakan rumahan yang sederhana namun penuh cita rasa.
-                </p>
-                <p className="text-[#3D2314]/80 text-lg">
-                  Kini, hampir empat dekade kemudian, Rasa Negeri telah berkembang menjadi restoran Indonesia premium dengan 5 cabang di Jakarta.
-                </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Values */}
+        <section className="bg-[#8B4513] py-16 sm:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-12 text-center">
+              <h2 className="mb-4 text-3xl font-bold text-[#FDF6E3] sm:text-4xl">
+                Nilai-Nilai Kami
+              </h2>
+              <p className="mx-auto max-w-2xl text-base text-[#FDF6E3]/70 sm:text-lg">
+                Prinsip yang kami pegang dalam setiap langkah
+              </p>
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {values.map((value, index) => (
+                <motion.div
+                  key={value.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="rounded-2xl bg-[#FDF6E3] p-6 text-center"
+                >
+                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#DAA520]">
+                    <value.icon className="h-7 w-7 text-[#2C1810]" />
+                  </div>
+                  <h3 className="mb-2 text-lg font-semibold text-[#2C1810]">{value.title}</h3>
+                  <p className="text-sm text-[#3D2314]/70">{value.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Milestones */}
+        <section className="bg-[#FDF6E3] py-16 sm:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-12 text-center">
+              <h2 className="mb-4 text-3xl font-bold text-[#2C1810] sm:text-4xl">
+                Perjalanan Kami
+              </h2>
+              <p className="mx-auto max-w-2xl text-base text-[#3D2314]/70 sm:text-lg">
+                Tonggak penting dalam sejarah Rasa Negeri
+              </p>
+            </div>
+
+            <div className="mx-auto max-w-3xl">
+              <div className="space-y-6">
+                {milestones.map((milestone, index) => (
+                  <motion.div
+                    key={milestone.year}
+                    initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex gap-4"
+                  >
+                    <div className="flex flex-col items-center">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#DAA520] text-sm font-bold text-[#2C1810]">
+                        {milestone.year}
+                      </div>
+                      {index < milestones.length - 1 && (
+                        <div className="mt-2 h-full w-0.5 bg-[#DAA520]/30" />
+                      )}
+                    </div>
+                    <div className="pb-6">
+                      <p className="text-base text-[#3D2314] sm:text-lg">{milestone.event}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Stats */}
+        <section className="bg-[#2C1810] py-16 sm:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-8 text-center sm:grid-cols-2 lg:grid-cols-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <p className="text-4xl font-bold text-[#DAA520] sm:text-5xl">15+</p>
+                <p className="mt-2 text-base text-[#FDF6E3]/70">Tahun Pengalaman</p>
               </motion.div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-20 bg-[#FDF6E3]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold font-heading text-[#2C1810] mb-4">Filosofi Kami</h2>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {values.map((value, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-white rounded-2xl p-6 shadow-lg text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#8B4513]/10 flex items-center justify-center">
-                    <value.icon className="w-8 h-8 text-[#8B4513]" />
-                  </div>
-                  <h3 className="text-lg font-bold font-heading text-[#2C1810] mb-2">{value.title}</h3>
-                  <p className="text-sm text-[#3D2314]/70">{value.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold font-heading text-[#2C1810] mb-4">Perjalanan Kami</h2>
-            </div>
-            <div className="max-w-3xl mx-auto">
-              {timeline.map((item, i) => (
-                <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex gap-6 mb-8">
-                  <div className="flex-shrink-0 w-20">
-                    <span className="inline-block px-3 py-1 bg-[#DAA520] text-[#2C1810] text-sm font-bold rounded-full">{item.year}</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold font-heading text-[#2C1810] mb-1">{item.title}</h3>
-                    <p className="text-[#3D2314]/70">{item.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="py-20 bg-[#2C1810]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold font-heading text-white mb-4">Penghargaan</h2>
-            </div>
-            <div className="grid md:grid-cols-4 gap-6">
-              {[
-                { year: "2024", award: "Best Indonesian Restaurant", org: "Jakarta Food Awards" },
-                { year: "2023", award: "Excellence in Service", org: "TripAdvisor" },
-                { year: "2022", award: "Top 10 Restaurants", org: "Indonesia Culinary" },
-                { year: "2020", award: "Heritage Restaurant", org: "Ministry of Tourism" },
-              ].map((item, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-white/10 rounded-xl p-6 text-center">
-                  <Award className="w-12 h-12 text-[#DAA520] mx-auto mb-4" />
-                  <div className="text-[#DAA520] font-bold mb-2">{item.year}</div>
-                  <h3 className="text-white font-bold mb-1">{item.award}</h3>
-                  <p className="text-white/60 text-sm">{item.org}</p>
-                </motion.div>
-              ))}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
+                <p className="text-4xl font-bold text-[#DAA520] sm:text-5xl">50+</p>
+                <p className="mt-2 text-base text-[#FDF6E3]/70">Menu Pilihan</p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                <p className="text-4xl font-bold text-[#DAA520] sm:text-5xl">4</p>
+                <p className="mt-2 text-base text-[#FDF6E3]/70">Cabang</p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                viewport={{ once: true }}
+              >
+                <p className="text-4xl font-bold text-[#DAA520] sm:text-5xl">100k+</p>
+                <p className="mt-2 text-base text-[#FDF6E3]/70">Pelanggan Puas</p>
+              </motion.div>
             </div>
           </div>
         </section>

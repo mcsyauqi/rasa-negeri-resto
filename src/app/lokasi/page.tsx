@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { MapPin, Clock, Phone, Users } from "lucide-react";
+import { MapPin, Phone, Clock, ExternalLink } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { locations } from "@/lib/data";
@@ -12,71 +11,104 @@ export default function LokasiPage() {
   return (
     <>
       <Header />
-      <main className="pt-20">
-        <section className="py-20 bg-[#2C1810]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold font-heading text-white mb-4">Lokasi Kami</h1>
-            <p className="text-lg text-white/70">Temukan cabang Rasa Negeri terdekat dari lokasi Anda</p>
+      <main className="pt-16 sm:pt-20">
+        {/* Hero */}
+        <section className="bg-[#2C1810] py-16 sm:py-20">
+          <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h1 className="mb-4 text-4xl font-bold text-[#FDF6E3] sm:text-5xl">
+                Lokasi Kami
+              </h1>
+              <p className="mx-auto max-w-2xl text-base text-[#FDF6E3]/70 sm:text-lg">
+                Kunjungi cabang Rasa Negeri terdekat untuk menikmati hidangan autentik Nusantara
+              </p>
+            </motion.div>
           </div>
         </section>
 
-        <section className="py-16 bg-[#FDF6E3]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Locations Grid */}
+        <section className="bg-[#FDF6E3] py-16 sm:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-8 lg:grid-cols-2">
               {locations.map((location, index) => (
                 <motion.div
                   key={location.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-2xl overflow-hidden shadow-lg"
+                  className="overflow-hidden rounded-2xl bg-white shadow-lg"
                 >
-                  <div className="relative h-48">
-                    <Image src={location.image} alt={location.name} fill className="object-cover" />
-                    {location.badge && (
-                      <span className="absolute top-4 left-4 px-3 py-1 bg-[#DAA520] text-[#2C1810] text-xs font-bold rounded-full">
-                        {location.badge}
-                      </span>
-                    )}
+                  <div className="relative aspect-video overflow-hidden">
+                    <Image
+                      src={location.image}
+                      alt={location.name}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold font-heading text-[#2C1810] mb-4">{location.name}</h3>
-                    <div className="space-y-3 mb-6">
+                    <h2 className="mb-4 text-xl font-bold text-[#2C1810] sm:text-2xl">
+                      {location.name}
+                    </h2>
+                    <div className="space-y-3">
                       <div className="flex items-start gap-3">
-                        <MapPin className="w-5 h-5 text-[#8B4513] flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-[#3D2314]/70">{location.address}</span>
+                        <MapPin className="mt-1 h-5 w-5 shrink-0 text-[#8B4513]" />
+                        <div>
+                          <p className="font-medium text-[#2C1810]">Alamat</p>
+                          <p className="text-sm text-[#3D2314]/70">{location.address}, {location.city}</p>
+                        </div>
                       </div>
                       <div className="flex items-start gap-3">
-                        <Users className="w-5 h-5 text-[#8B4513] flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-[#3D2314]/70">{location.capacity}</span>
+                        <Phone className="mt-1 h-5 w-5 shrink-0 text-[#8B4513]" />
+                        <div>
+                          <p className="font-medium text-[#2C1810]">Telepon</p>
+                          <p className="text-sm text-[#3D2314]/70">{location.phone}</p>
+                        </div>
                       </div>
                       <div className="flex items-start gap-3">
-                        <Clock className="w-5 h-5 text-[#8B4513] flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-[#3D2314]/70">{location.hours}</span>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <Phone className="w-5 h-5 text-[#8B4513] flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-[#3D2314]/70">{location.phone}</span>
+                        <Clock className="mt-1 h-5 w-5 shrink-0 text-[#8B4513]" />
+                        <div>
+                          <p className="font-medium text-[#2C1810]">Jam Operasional</p>
+                          <p className="text-sm text-[#3D2314]/70">{location.hours}</p>
+                        </div>
                       </div>
                     </div>
-                    <div className="flex gap-3">
-                      <Link href="/reservasi" className="flex-1 text-center px-4 py-2 bg-[#8B4513] text-white text-sm font-medium rounded-full hover:bg-[#6B3410] transition-colors">
-                        Reservasi
-                      </Link>
-                      <a
-                        href={`https://maps.google.com/?q=${encodeURIComponent(location.address)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 text-center px-4 py-2 border-2 border-[#8B4513] text-[#8B4513] text-sm font-medium rounded-full hover:bg-[#8B4513] hover:text-white transition-colors"
-                      >
-                        Petunjuk Arah
-                      </a>
-                    </div>
+                    <a
+                      href={location.mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-6 inline-flex h-10 items-center justify-center gap-2 rounded-full bg-[#8B4513] px-6 text-sm font-semibold text-[#FDF6E3] transition-colors hover:bg-[#8B4513]/90"
+                    >
+                      Lihat di Maps
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
                   </div>
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Contact CTA */}
+        <section className="bg-[#8B4513] py-16 sm:py-20">
+          <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+            <h2 className="mb-4 text-2xl font-bold text-[#FDF6E3] sm:text-3xl">
+              Ada Pertanyaan?
+            </h2>
+            <p className="mx-auto mb-8 max-w-2xl text-base text-[#FDF6E3]/70 sm:text-lg">
+              Hubungi kami untuk informasi lebih lanjut atau reservasi
+            </p>
+            <a
+              href="/kontak"
+              className="inline-flex h-12 items-center justify-center rounded-full bg-[#DAA520] px-8 text-base font-semibold text-[#2C1810] transition-colors hover:bg-[#DAA520]/90"
+            >
+              Hubungi Kami
+            </a>
           </div>
         </section>
       </main>
